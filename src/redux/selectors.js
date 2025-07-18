@@ -14,7 +14,8 @@
 // redux tookit cũng cấp sẵn reselect đó
 // yarn add reselect
 
-import { createSelector } from "reselect";
+// import { createSelector } from "reselect";
+import { createSelector } from "@reduxjs/toolkit"; // không cần cài đặt reselect nữa
 // giải quyết bài toàn có 1 todoListSelector đang dựa vào dữ liệu của searchTextSelector
 export const searchTextSelector = (state) => state.filters.search;
 export const filterStatusSelector = (state) => state.filters.status;
@@ -27,6 +28,7 @@ export const todosRemainingSelector = createSelector(
   searchTextSelector,
   filterPrioritiesSelector,
   (todoList, status, searchText, priorities) => {
+    // nếu như các dữ liệu (todoList, status, searchText, priorities) không có sự thay đổi thì func này sẽ không được thực thi lại giúp ghi nhớ lại được các object -. không làm cho component bị re-render lại khi giá trị không đổi
     return todoList.filter((todo) => {
       if (status === "All") {
         return priorities.length

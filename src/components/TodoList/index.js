@@ -1,10 +1,11 @@
 import { Col, Row, Input, Button, Select, Tag } from "antd";
 import Todo from "../Todo";
 import { useDispatch, useSelector } from "react-redux"; // useDispatch để lấy ra được dispatch, useSelector: lấy dữ liệu ở trong cái kho chung để hiển thị trong UI
-import { addTodo } from "../../redux/actions";
+// import { addTodo } from "../../redux/actions";
 import { v4 as uuidv4 } from "uuid"; //tự động ren ra id ngẫu nhiên và duy nhất
 import { useState } from "react";
 import { todosRemainingSelector } from "../../redux/selectors";
+import todoListSlice from "./todosSlice";
 
 export default function TodoList() {
   const [todoName, setTodoName] = useState(""); // tạo ra state để lưu trữ được thông tin hiện tại -> để lấy ra được
@@ -20,7 +21,7 @@ export default function TodoList() {
   const handleAddButtonClick = () => {
     // sử dụng 1 function dispatch() để bắn đi 1 cái action
     dispatch(
-      addTodo({
+      todoListSlice.actions.addTodo({
         id: uuidv4(), // uuidv4 tự tạo giá trị cho id duy nhất
         name: todoName,
         priority: priority,

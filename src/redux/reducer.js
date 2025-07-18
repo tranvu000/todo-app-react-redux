@@ -38,8 +38,8 @@
 // };
 
 import { combineReducers } from "redux"; //là func do redux cung cấp để combine(kết hợp) các reducer này lại
-import filtersReducer from "../components/Filters/FiltersSlice";
-import todoListReducer from "../components/TodoList/TodosSlice";
+import filtersReducer from "../components/Filters/filtersSlice";
+import todoListReducer from "../components/TodoList/todosSlice";
 
 // const rootReducer = (state = {}, action) => {
 //   // tính năng split reducer
